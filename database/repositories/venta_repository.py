@@ -1,4 +1,4 @@
-from sqlalchemy.orm import Session
+from sqlalchemy.orm import Session, joinedload
 
 from database.models.venta import Venta
 from database.models.venta_detalle import VentaDetalle
@@ -32,7 +32,9 @@ class VentaRepository:
             )
 
             if producto is None:
-                raise ValueError("Producto no encontrado.")
+                raise ValueError(
+                    "Producto no encontrado."
+                )
 
             if producto.stock < item["cantidad"]:
                 raise ValueError(
@@ -58,7 +60,42 @@ class VentaRepository:
         venta.total = total
 
         db.commit()
-
         db.refresh(venta)
 
         return venta
+
+    @staticmethod
+    def listar(
+        db: Session,
+        tienda_id: int,
+    ):
+        return (
+            db.query(Venta)
+            .options(
+                joinedload(Venta.cliente),
+            )
+            .filter(
+                Venta.tienda_id == tienda_id,
+            )
+            .order_by(
+                Venta.fecha.desc(),
+            )
+            .all()
+        )
+
+    @staticmethod
+    def obtener_por_id(
+        db: Session,
+        venta_id: int,
+    ):
+        return (
+            db.query(Venta)
+            .options(
+                joinedload(Venta.cliente),
+                joinedload(Venta.detalles),
+            )
+            .filter(
+                Venta.id == venta_id,
+            )
+            .first()
+        )
