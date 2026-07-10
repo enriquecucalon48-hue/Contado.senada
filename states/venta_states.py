@@ -7,3 +7,7 @@ class NuevaVenta(StatesGroup):
     cantidad = State()
     carrito = State()
     confirmar = State()
+
+
+class VerVenta(StatesGroup):
+    seleccionar = State()
