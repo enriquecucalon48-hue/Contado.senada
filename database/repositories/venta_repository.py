@@ -92,7 +92,7 @@ class VentaRepository:
             db.query(Venta)
             .options(
                 joinedload(Venta.cliente),
-                joinedload(Venta.detalles),
+                joinedload(Venta.detalles).joinedload(VentaDetalle.producto),
             )
             .filter(
                 Venta.id == venta_id,

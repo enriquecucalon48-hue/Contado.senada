@@ -7,7 +7,9 @@ from database.conexion import Base
 class VentaDetalle(Base):
     __tablename__ = "venta_detalles"
 
-    id: Mapped[int] = mapped_column(primary_key=True)
+    id: Mapped[int] = mapped_column(
+        primary_key=True,
+    )
 
     venta_id: Mapped[int] = mapped_column(
         ForeignKey("ventas.id"),
@@ -38,4 +40,7 @@ class VentaDetalle(Base):
         back_populates="detalles",
     )
 
-    producto = relationship("Producto")
+    producto = relationship(
+        "Producto",
+        back_populates="ventas_detalle",
+    )

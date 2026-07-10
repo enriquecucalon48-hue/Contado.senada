@@ -44,3 +44,8 @@ class Producto(Base):
         "Tienda",
         back_populates="productos",
     )
+
+    ventas_detalle = relationship(
+        "VentaDetalle",
+        back_populates="producto",
+    )
