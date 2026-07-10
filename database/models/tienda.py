@@ -46,3 +46,10 @@ class Tienda(Base):
         back_populates="tienda",
         cascade="all, delete-orphan",
     )
+
+    clientes = relationship(
+        "Cliente",
+        back_populates="tienda",
+        cascade="all, delete-orphan",
+    )
+

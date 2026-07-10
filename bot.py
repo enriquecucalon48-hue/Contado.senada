@@ -20,6 +20,14 @@ from handlers.productos.listar import router as productos_listar_router
 from handlers.productos.editar import router as productos_editar_router
 from handlers.productos.eliminar import router as productos_eliminar_router
 
+# Clientes
+from handlers.clientes.menu import router as clientes_menu_router
+from handlers.clientes.crear import router as clientes_crear_router
+from handlers.clientes.listar import router as cliente_listar_router
+from handlers.clientes.editar import router as clientes_editar_router
+from handlers.clientes.eliminar import router as clientes_eliminar_router
+
+
 
 bot = Bot(
     token=BOT_TOKEN,
@@ -46,6 +54,14 @@ dp.include_router(productos_crear_router)
 dp.include_router(productos_listar_router)
 dp.include_router(productos_editar_router)
 dp.include_router(productos_eliminar_router)
+
+# Clientes
+dp.include_router(clientes_menu_router)
+dp.include_router(clientes_crear_router)
+dp.include_router(cliente_listar_router)
+dp.include_router(clientes_editar_router)
+dp.include_router(clientes_eliminar_router)
+
 async def main():
     print("🤖 Bot iniciado correctamente...")
     await dp.start_polling(bot)
