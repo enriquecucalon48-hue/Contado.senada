@@ -39,4 +39,10 @@ class Tienda(Base):
     usuario = relationship(
         "Usuario",
         back_populates="tiendas",
+
+    )
+    productos = relationship(
+        "Producto",
+        back_populates="tienda",
+        cascade="all, delete-orphan",
     )

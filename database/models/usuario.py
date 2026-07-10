@@ -1,7 +1,7 @@
 from datetime import datetime
 
-from sqlalchemy import BigInteger, DateTime, String
-from sqlalchemy.orm import Mapped, mapped_column
+from sqlalchemy import BigInteger, DateTime, ForeignKey, String
+
 
 from database.conexion import Base
 
@@ -33,6 +33,8 @@ class Usuario(Base):
         nullable=True,
     )
 
+
+
     fecha_registro: Mapped[datetime] = mapped_column(
         DateTime,
         default=datetime.utcnow,
@@ -41,5 +43,6 @@ class Usuario(Base):
     tiendas = relationship(
         "Tienda",
         back_populates="usuario",
-        cascade="all, delete-orphan",
+
     )
+
