@@ -11,3 +11,6 @@ class EditarProducto(StatesGroup):
     seleccionar = State()
     precio = State()
     stock = State()
+
+class EliminarProducto(StatesGroup):
+    seleccionar = State()

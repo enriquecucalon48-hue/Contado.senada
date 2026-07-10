@@ -18,7 +18,7 @@ from handlers.productos.menu import router as productos_menu_router
 from handlers.productos.crear import router as productos_crear_router
 from handlers.productos.listar import router as productos_listar_router
 from handlers.productos.editar import router as productos_editar_router
-
+from handlers.productos.eliminar import router as productos_eliminar_router
 
 
 bot = Bot(
@@ -45,6 +45,7 @@ dp.include_router(productos_menu_router)
 dp.include_router(productos_crear_router)
 dp.include_router(productos_listar_router)
 dp.include_router(productos_editar_router)
+dp.include_router(productos_eliminar_router)
 async def main():
     print("🤖 Bot iniciado correctamente...")
     await dp.start_polling(bot)
