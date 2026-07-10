@@ -5,6 +5,7 @@ menu_principal = ReplyKeyboardMarkup(
         [KeyboardButton(text="🏪 Tiendas")],
         [KeyboardButton(text="📦 Productos")],
         [KeyboardButton(text="👥 Clientes")],
+        [KeyboardButton(text="🧾 Ventas")],
         [KeyboardButton(text="💳 Deudas")],
         [KeyboardButton(text="💵 Pagos")],
         [KeyboardButton(text="📊 Reportes")],

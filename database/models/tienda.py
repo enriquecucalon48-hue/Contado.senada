@@ -39,8 +39,8 @@ class Tienda(Base):
     usuario = relationship(
         "Usuario",
         back_populates="tiendas",
-
     )
+
     productos = relationship(
         "Producto",
         back_populates="tienda",
@@ -53,3 +53,8 @@ class Tienda(Base):
         cascade="all, delete-orphan",
     )
 
+    ventas = relationship(
+        "Venta",
+        back_populates="tienda",
+        cascade="all, delete-orphan",
+    )

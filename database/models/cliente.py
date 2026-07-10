@@ -55,3 +55,9 @@ class Cliente(Base):
         "Tienda",
         back_populates="clientes",
     )
+
+    ventas = relationship(
+        "Venta",
+        back_populates="cliente",
+    )
+
