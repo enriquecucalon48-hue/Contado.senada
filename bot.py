@@ -18,6 +18,9 @@ from handlers.productos.menu import router as productos_menu_router
 from handlers.productos.crear import router as productos_crear_router
 from handlers.productos.listar import router as productos_listar_router
 from handlers.productos.editar import router as productos_editar_router
+
+
+
 bot = Bot(
     token=BOT_TOKEN,
     default=DefaultBotProperties(
