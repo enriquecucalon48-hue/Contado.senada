@@ -123,3 +123,4 @@ async def recibir_stock(message: Message, state: FSMContext):
         db.close()
 
     await state.clear()
+

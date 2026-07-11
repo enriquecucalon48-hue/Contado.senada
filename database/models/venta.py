@@ -46,3 +46,8 @@ class Venta(Base):
         back_populates="venta",
         cascade="all, delete-orphan",
     )
+    pagos = relationship(
+        "Pago",
+        back_populates="venta",
+        cascade="all, delete-orphan",
+    )
