@@ -6,9 +6,11 @@ menu_principal = ReplyKeyboardMarkup(
         [KeyboardButton(text="📦 Productos")],
         [KeyboardButton(text="👥 Clientes")],
         [KeyboardButton(text="🧾 Ventas")],
-        [KeyboardButton(text="💳 Deudas")],
         [KeyboardButton(text="💵 Pagos")],
+        [KeyboardButton(text="💸 Gastos")],
+        [KeyboardButton(text="💰 Caja")],
         [KeyboardButton(text="📊 Reportes")],
+        [KeyboardButton(text="🏠 Inicio")],
     ],
     resize_keyboard=True,
 )

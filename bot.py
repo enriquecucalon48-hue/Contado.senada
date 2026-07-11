@@ -35,6 +35,20 @@ from handlers.ventas.detalle import router as ventas_detalle_router
 from handlers.pagos.menu import router as pagos_menu_router
 from handlers.pagos.crear import router as pagos_crear_router
 from handlers.pagos.listar import router as pagos_listar_router
+# Reportes
+from handlers.reportes.menu import router as reportes_menu_router
+from handlers.reportes.dashboard import router as reportes_dashboard_router
+from handlers.reportes.clientes_deuda import router as clientes_deuda_router
+#Gastos
+from handlers.gastos.menu import router as gastos_menu_router
+from handlers.gastos.crear import router as gastos_crea_router
+from handlers.gastos.listar import router as gastos_listar_router
+# Caja
+from handlers.caja.ver import router as caja_ver_router
+# navegar
+from handlers.navigation import router as navigation_router
+
+
 
 bot = Bot(
     token=BOT_TOKEN,
@@ -79,6 +93,26 @@ dp.include_router(ventas_detalle_router)
 dp.include_router(pagos_menu_router)
 dp.include_router(pagos_crear_router)
 dp.include_router(pagos_listar_router)
+
+
+#reportes
+dp.include_router(reportes_menu_router)
+dp.include_router(reportes_dashboard_router)
+dp.include_router(clientes_deuda_router)
+
+#gastos
+dp.include_router(gastos_menu_router)
+dp.include_router(gastos_crea_router)
+dp.include_router(gastos_listar_router)
+
+# Caja
+dp.include_router(caja_ver_router)
+# Navegar
+dp.include_router(navigation_router)
+
+
+
+
 async def main():
     print("🤖 Bot iniciado correctamente...")
     await dp.start_polling(bot)
