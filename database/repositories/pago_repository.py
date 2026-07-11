@@ -1,6 +1,8 @@
+from sqlalchemy import func
 from sqlalchemy.orm import Session
 
 from database.models.pago import Pago
+from database.models.venta import Venta
 
 
 class PagoRepository:
@@ -17,9 +19,7 @@ class PagoRepository:
         )
 
         db.add(pago)
-
         db.commit()
-
         db.refresh(pago)
 
         return pago
@@ -45,15 +45,37 @@ class PagoRepository:
         db: Session,
         venta_id: int,
     ):
-        pagos = (
-            db.query(Pago)
+        total = (
+            db.query(
+                func.coalesce(
+                    func.sum(Pago.monto),
+                    0,
+                )
+            )
             .filter(
                 Pago.venta_id == venta_id,
             )
-            .all()
+            .scalar()
         )
 
-        return sum(
-            pago.monto
-            for pago in pagos
+        return float(total)
+
+    @staticmethod
+    def saldo_pendiente(
+        db: Session,
+        venta_id: int,
+    ):
+        venta = db.get(
+            Venta,
+            venta_id,
         )
+
+        if venta is None:
+            return 0
+
+        total_pagado = PagoRepository.total_pagado(
+            db,
+            venta_id,
+        )
+
+        return float(venta.total) - total_pagado

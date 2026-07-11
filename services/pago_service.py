@@ -11,6 +11,21 @@ class PagoService:
         venta_id: int,
         monto: float,
     ):
+        saldo = PagoRepository.saldo_pendiente(
+            db=db,
+            venta_id=venta_id,
+        )
+
+        if monto <= 0:
+            raise ValueError(
+                "El monto debe ser mayor que cero."
+            )
+
+        if monto > saldo:
+            raise ValueError(
+                f"El pago excede el saldo pendiente (${saldo:.2f})."
+            )
+
         return PagoRepository.crear(
             db=db,
             venta_id=venta_id,
@@ -33,6 +48,16 @@ class PagoService:
         venta_id: int,
     ):
         return PagoRepository.total_pagado(
+            db=db,
+            venta_id=venta_id,
+        )
+
+    @staticmethod
+    def saldo_pendiente(
+        db: Session,
+        venta_id: int,
+    ):
+        return PagoRepository.saldo_pendiente(
             db=db,
             venta_id=venta_id,
         )

@@ -141,8 +141,42 @@ async def guardar_pago(
             monto=monto,
         )
 
+        total_pagado = PagoService.total_pagado(
+            db=db,
+            venta_id=datos["venta_id"],
+        )
+
+        saldo = PagoService.saldo_pendiente(
+            db=db,
+            venta_id=datos["venta_id"],
+        )
+
+        venta = VentaService.obtener_por_id(
+            db=db,
+            venta_id=datos["venta_id"],
+        )
+
+        if saldo == 0:
+            estado = "🟢 PAGADA"
+        elif total_pagado == 0:
+            estado = "🔴 PENDIENTE"
+        else:
+            estado = "🟡 PARCIAL"
+
+        texto = (
+            "✅ <b>Pago registrado correctamente</b>\n\n"
+            f"🧾 Venta #{venta.id}\n"
+            f"💰 Total: ${float(venta.total):.2f}\n"
+            f"💵 Pagado: ${total_pagado:.2f}\n"
+            f"💳 Saldo: ${saldo:.2f}\n"
+            f"📌 Estado: {estado}"
+        )
+
+        await message.answer(texto)
+
+    except ValueError as e:
         await message.answer(
-            "✅ Pago registrado correctamente."
+            f"❌ {e}"
         )
 
     finally:

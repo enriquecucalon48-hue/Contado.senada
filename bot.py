@@ -34,6 +34,8 @@ from handlers.ventas.detalle import router as ventas_detalle_router
 # Pagos
 from handlers.pagos.menu import router as pagos_menu_router
 from handlers.pagos.crear import router as pagos_crear_router
+from handlers.pagos.listar import router as pagos_listar_router
+
 bot = Bot(
     token=BOT_TOKEN,
     default=DefaultBotProperties(
@@ -76,6 +78,7 @@ dp.include_router(ventas_detalle_router)
 #Pagos
 dp.include_router(pagos_menu_router)
 dp.include_router(pagos_crear_router)
+dp.include_router(pagos_listar_router)
 async def main():
     print("🤖 Bot iniciado correctamente...")
     await dp.start_polling(bot)
