@@ -2,7 +2,7 @@ from aiogram import Router, F
 from aiogram.fsm.context import FSMContext
 from aiogram.types import Message
 
-from keyboards.menu import menu_principal
+from handlers.start import mostrar_menu_principal
 
 router = Router()
 
@@ -14,10 +14,7 @@ async def volver(
 ):
     await state.clear()
 
-    await message.answer(
-        "🏠 Menú principal",
-        reply_markup=menu_principal,
-    )
+    await mostrar_menu_principal(message)
 
 
 @router.message(F.text == "🏠 Inicio")
@@ -27,7 +24,4 @@ async def inicio(
 ):
     await state.clear()
 
-    await message.answer(
-        "🏠 Menú principal",
-        reply_markup=menu_principal,
-    )
+    await mostrar_menu_principal(message)

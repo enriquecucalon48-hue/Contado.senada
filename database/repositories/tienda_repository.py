@@ -33,3 +33,11 @@ class TiendaRepository:
         db.refresh(tienda)
 
         return tienda
+
+    @staticmethod
+    def eliminar(
+        db: Session,
+        tienda: Tienda,
+    ):
+        db.delete(tienda)
+        db.commit()

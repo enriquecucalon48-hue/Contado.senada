@@ -47,14 +47,6 @@ class GastoRepository:
         )
 
     @staticmethod
-    def eliminar(
-        db: Session,
-        gasto: Gasto,
-    ):
-        db.delete(gasto)
-        db.commit()
-
-    @staticmethod
     def listar(
             db: Session,
     ):
@@ -64,4 +56,22 @@ class GastoRepository:
                 Gasto.fecha.desc(),
             )
             .all()
+        )
+    @staticmethod
+    def eliminar(
+        db: Session,
+        gasto: Gasto,
+    ):
+        db.delete(gasto)
+        db.commit()
+
+    @staticmethod
+    def obtener_por_id(
+        db: Session,
+        gasto_id: int,
+    ):
+        return (
+            db.query(Gasto)
+            .filter(Gasto.id == gasto_id)
+            .first()
         )

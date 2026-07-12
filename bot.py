@@ -12,7 +12,8 @@ from handlers.start import router as start_router
 # Tiendas
 from handlers.tiendas.menu import router as tiendas_menu_router
 from handlers.tiendas.crear import router as tiendas_crear_router
-
+from handlers.tiendas.listar import router as tiendas_listar_router
+from handlers.tiendas.eliminar import router as tiendas_eliminar_router
 # Productos
 from handlers.productos.menu import router as productos_menu_router
 from handlers.productos.crear import router as productos_crear_router
@@ -43,6 +44,8 @@ from handlers.reportes.clientes_deuda import router as clientes_deuda_router
 from handlers.gastos.menu import router as gastos_menu_router
 from handlers.gastos.crear import router as gastos_crea_router
 from handlers.gastos.listar import router as gastos_listar_router
+from handlers.gastos.eliminar import router as gastos_eliminar_router
+
 # Caja
 from handlers.caja.ver import router as caja_ver_router
 # navegar
@@ -65,10 +68,12 @@ dp = Dispatcher()
 
 dp.include_router(start_router)
 
+
 # Tiendas
 dp.include_router(tiendas_menu_router)
 dp.include_router(tiendas_crear_router)
-
+dp.include_router(tiendas_listar_router)
+dp.include_router(tiendas_eliminar_router)
 # Productos
 dp.include_router(productos_menu_router)
 dp.include_router(productos_crear_router)
@@ -104,6 +109,7 @@ dp.include_router(clientes_deuda_router)
 dp.include_router(gastos_menu_router)
 dp.include_router(gastos_crea_router)
 dp.include_router(gastos_listar_router)
+dp.include_router(gastos_eliminar_router)
 
 # Caja
 dp.include_router(caja_ver_router)

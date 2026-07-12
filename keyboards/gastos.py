@@ -4,7 +4,8 @@ menu_gastos = ReplyKeyboardMarkup(
     keyboard=[
         [KeyboardButton(text="➕ Registrar gasto")],
         [KeyboardButton(text="📋 Ver gastos")],
-        [KeyboardButton(text="⬅️ Volver")],
+        [KeyboardButton(text="🗑 Eliminar gasto")],
+        [KeyboardButton(text="⬅️ Menú principal")],
     ],
     resize_keyboard=True,
 )
@@ -17,6 +18,7 @@ categorias_gastos = ReplyKeyboardMarkup(
         [KeyboardButton(text="🌐 Servicios")],
         [KeyboardButton(text="🍔 Alimentación")],
         [KeyboardButton(text="📁 Otros")],
+        [KeyboardButton(text="⬅️ Menú principal")],
     ],
     resize_keyboard=True,
 )

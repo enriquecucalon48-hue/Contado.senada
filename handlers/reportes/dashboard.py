@@ -33,7 +33,7 @@ async def dashboard(message: Message):
             f"💰 Ventas de hoy: <b>${float(ventas_hoy):.2f}</b>\n"
             f"📅 Ventas del mes: <b>${float(ventas_mes):.2f}</b>\n\n"
 
-            f"⚠ Productos con stock bajo: <b>{stock_bajo}</b>\n"
+           
             f"💳 Saldo por cobrar: <b>${saldo:.2f}</b>"
         )
 

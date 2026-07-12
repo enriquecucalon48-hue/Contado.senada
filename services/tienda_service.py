@@ -27,3 +27,12 @@ class TiendaService:
             telefono=telefono,
             usuario_id=usuario_id,
         )
+    @staticmethod
+    def eliminar(
+        db: Session,
+        tienda,
+    ):
+        TiendaRepository.eliminar(
+            db=db,
+            tienda=tienda,
+        )

@@ -9,6 +9,16 @@ from services.usuario_service import UsuarioService
 router = Router()
 
 
+async def mostrar_menu_principal(
+    message: Message,
+):
+    await message.answer(
+        f"👋 Bienvenido <b>{message.from_user.full_name}</b>\n\n"
+        "Seleccione una opción del menú.",
+        reply_markup=menu_principal,
+    )
+
+
 @router.message(CommandStart())
 async def comando_start(message: Message):
     db = SessionLocal()
@@ -19,11 +29,7 @@ async def comando_start(message: Message):
             telegram_user=message.from_user,
         )
 
-        await message.answer(
-            f"👋 Bienvenido <b>{message.from_user.full_name}</b>\n\n"
-            "Seleccione una opción del menú.",
-            reply_markup=menu_principal,
-        )
+        await mostrar_menu_principal(message)
 
     finally:
         db.close()

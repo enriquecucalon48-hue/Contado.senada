@@ -42,18 +42,31 @@ class GastoService:
             gasto_id,
         )
 
-    @staticmethod
-    def eliminar(
-        db: Session,
-        gasto,
-    ):
-        return GastoRepository.eliminar(
-            db,
-            gasto,
-        )
+
 
     @staticmethod
     def listar(
             db: Session,
     ):
         return GastoRepository.listar(db)
+
+    @staticmethod
+    def obtener_por_id(
+        db: Session,
+        gasto_id: int,
+    ):
+        return GastoRepository.obtener_por_id(
+            db=db,
+            gasto_id=gasto_id,
+        )
+
+
+    @staticmethod
+    def eliminar(
+        db: Session,
+        gasto,
+    ):
+        GastoRepository.eliminar(
+            db=db,
+            gasto=gasto,
+        )

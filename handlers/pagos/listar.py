@@ -12,7 +12,7 @@ from utils.contexto import (
 router = Router()
 
 
-@router.message(F.text == "📜 Historial de pagos")
+@router.message(F.text == "📋 Historial de pagos")
 async def historial_pagos(message: Message):
     db = SessionLocal()
 
